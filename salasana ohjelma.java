@@ -9,8 +9,9 @@ public class salasanan_vahvuus {
 		System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
 		System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
 		System.out.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
-		System.out.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia")
+		System.out.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia");
 		System.out.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
+		System.out.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
 		System.out.println("Syötä testattava salasana:");
 		String salasana = user_input.next();
 		int tulokset[] = tarkista_kriteerit(salasana);
@@ -21,7 +22,7 @@ public class salasanan_vahvuus {
 
 	public static int[] tarkista_kriteerit(String salasana) {
 		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), kirjainkoko(salasana),
-		tarkista_erikoismerkki(salasana)};
+		tarkista_erikoismerkki(salasana), tarkista_hupsu(salasana)};
 		int läpäissyt = 0;
 		int totaali = 0;
 		for (int i = 0; i < kriteerit.length; i++) {
@@ -111,6 +112,12 @@ public class salasanan_vahvuus {
 			return false;
 	}//kirjainkoko
 	
+	public static boolean tarkista_hupsu(String salasana) {
+		if (salasana.indexOf("hupsu") != -1)
+			return true;
+		else
+			return false;
+	}//tarkista_hupsu
 	
 	
 }//salasanan_vahvuus

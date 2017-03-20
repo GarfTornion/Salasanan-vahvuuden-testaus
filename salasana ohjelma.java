@@ -8,6 +8,8 @@ public class salasanan_vahvuus {
 		System.out.println("Tervetuloa testaamaan salasanasi vahvuutta!");
 		System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
 		System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
+		System.out.println("Kriteeri 2: Salasanassa on oltava vähintään yksi numero");
+		System.out.println("Kriteeri 3: Salasanassa on oltava isoja ja pieniä kirjaimia.");
 		System.out.println("Syötä testattava salasana:");
 		String salasana = user_input.next();
 		int tulokset[] = tarkista_kriteerit(salasana);
@@ -17,7 +19,7 @@ public class salasanan_vahvuus {
 	}//main
 
 	public static int[] tarkista_kriteerit(String salasana) {
-		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana)};
+		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), kirjainkoko(salasana)};
 		int läpäissyt = 0;
 		int totaali = 0;
 		for (int i = 0; i < kriteerit.length; i++) {
@@ -52,9 +54,12 @@ public class salasanan_vahvuus {
 		}
 	}//vahvuus
 	
+	
+	
 	public static boolean tarkista_numero(String salasana) {
 		int i = 0;
 		int numero = 0;
+		
 		do {
 			char a = salasana.charAt(i);
 			if (Character.isDigit(a))
@@ -67,4 +72,28 @@ public class salasanan_vahvuus {
 			return false;
 	}//tarkista_numero
 		
+
+	public static boolean kirjainkoko(String salasana) {
+		int i = 0;
+		int numero1 = 0;
+		int numero2 = 0;
+		
+		do {
+			char a = salasana.charAt(i);
+			if (Character.isUpperCase(a) && (numero1 == 0)) 
+				numero1 = 1;
+			
+			if (Character.isLowerCase(a) && (numero2 == 0))
+				numero2 = 1;
+			i++;
+
+		} while (i < salasana.length() &&! (numero1 == 1 && numero2 == 1));
+		if (numero1 == 1 && numero2 == 1)
+			return true;
+		else
+			return false;
+	}//kirjainkoko
+	
+	
+	
 }//salasanan_vahvuus

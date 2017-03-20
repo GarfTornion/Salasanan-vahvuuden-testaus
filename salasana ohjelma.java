@@ -8,8 +8,13 @@ public class salasanan_vahvuus {
 		System.out.println("Tervetuloa testaamaan salasanasi vahvuutta!");
 		System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
 		System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
+<<<<<<< HEAD
 		System.out.println("Kriteeri 2: Salasanassa on oltava vähintään yksi numero");
 		System.out.println("Kriteeri 3: Salasanassa on oltava isoja ja pieniä kirjaimia.");
+=======
+		System.out.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
+		System.out.println("Kriteeri 3: Salasanan tulee sisältää vähintään yksi erikoismerkki");
+>>>>>>> origin/master
 		System.out.println("Syötä testattava salasana:");
 		String salasana = user_input.next();
 		int tulokset[] = tarkista_kriteerit(salasana);
@@ -19,7 +24,11 @@ public class salasanan_vahvuus {
 	}//main
 
 	public static int[] tarkista_kriteerit(String salasana) {
+<<<<<<< HEAD
 		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), kirjainkoko(salasana)};
+=======
+		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), tarkista_erikoismerkki(salasana)};
+>>>>>>> origin/master
 		int läpäissyt = 0;
 		int totaali = 0;
 		for (int i = 0; i < kriteerit.length; i++) {
@@ -71,6 +80,21 @@ public class salasanan_vahvuus {
 		else
 			return false;
 	}//tarkista_numero
+	
+	public static boolean tarkista_erikoismerkki(String salasana) {
+		int i = 0;
+		int erikoismerkki = 0;
+		do {
+			char a = salasana.charAt(i);
+			if (Character.isJavaIdentifierPart(a) && !Character.isLetterOrDigit(a))
+				erikoismerkki = 1;
+			i++;
+		} while (i < salasana.length() && (erikoismerkki == 0));
+		if (erikoismerkki == 1)
+			return true;
+		else
+			return false;
+	}//tarkista_erikoismerkki
 		
 
 	public static boolean kirjainkoko(String salasana) {

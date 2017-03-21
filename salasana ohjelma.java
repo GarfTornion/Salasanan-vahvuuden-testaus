@@ -13,6 +13,8 @@ public class salasanan_vahvuus {
 		System.out.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
 		System.out.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
 		System.out.println("Kriteeri 6: Salasanan tulee sisältää yhtälön 5-10+2^4 vastaus");
+		System.out.println("Kriteeri 7: Salasanan tulee sisältää sana 'gaben'");
+		System.out.println("Kriteeri 8: Salasanan tulee sisältää hymiö ':D'");
 		System.out.println("Syötä testattava salasana:");
 		String salasana = user_input.next();
 		int tulokset[] = tarkista_kriteerit(salasana);
@@ -23,7 +25,8 @@ public class salasanan_vahvuus {
 
 	public static int[] tarkista_kriteerit(String salasana) {
 		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), kirjainkoko(salasana),
-		tarkista_erikoismerkki(salasana), tarkista_hupsu(salasana), tarkista_vastaus(salasana)};
+		tarkista_erikoismerkki(salasana), tarkista_hupsu(salasana), tarkista_vastaus(salasana),
+		tarkista_gaben(salasana), tarkista_hymio(salasana)};
 		int läpäissyt = 0;
 		int totaali = 0;
 		for (int i = 0; i < kriteerit.length; i++) {
@@ -126,5 +129,20 @@ public class salasanan_vahvuus {
 		else
 			return false;
 	}//tarkista_vastaus
+	
+	public static boolean tarkista_gaben(String salasana) {
+		if (salasana.indexOf("gaben") != -1)
+			return true;
+		else
+			return false;
+	}//tarkista_gaben
+	
+	public static boolean tarkista_hymio(String salasana) {
+		if (salasana.indexOf(":D") != -1)
+			return true;
+		else
+			return false;
+	}//tarkista_hymio
+	
 	
 }//salasanan_vahvuus

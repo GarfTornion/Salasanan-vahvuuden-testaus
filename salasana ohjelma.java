@@ -24,7 +24,7 @@ public class salasanan_vahvuus {
 	}//main
 
 	public static int[] tarkista_kriteerit(String salasana) {
-		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), kirjainkoko(salasana),
+		boolean kriteerit[] = {pituus(salasana), tarkista_numero(salasana), tarkista_kirjainkoko(salasana),
 		tarkista_erikoismerkki(salasana), tarkista_hupsu(salasana), tarkista_vastaus(salasana),
 		tarkista_gaben(salasana), tarkista_hymio(salasana)};
 		int läpäissyt = 0;
@@ -61,8 +61,6 @@ public class salasanan_vahvuus {
 		}
 	}//vahvuus
 	
-	
-	
 	public static boolean tarkista_numero(String salasana) {
 		int i = 0;
 		int numero = 0;
@@ -95,7 +93,7 @@ public class salasanan_vahvuus {
 	}//tarkista_erikoismerkki
 		
 
-	public static boolean kirjainkoko(String salasana) {
+	public static boolean tarkista_kirjainkoko(String salasana) {
 		int i = 0;
 		int numero1 = 0;
 		int numero2 = 0;
@@ -114,7 +112,7 @@ public class salasanan_vahvuus {
 			return true;
 		else
 			return false;
-	}//kirjainkoko
+	}//tarkista_kirjainkoko
 	
 	public static boolean tarkista_hupsu(String salasana) {
 		if (salasana.indexOf("hupsu") != -1)

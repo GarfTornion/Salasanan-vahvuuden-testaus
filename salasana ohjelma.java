@@ -1,21 +1,21 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class salasanan_vahvuus {
 
 	private static final Scanner user_input = new Scanner( System.in );
 	
-	public static void main(String[] args) {
-		System.out.println("Tervetuloa testaamaan salasanasi vahvuutta!");
-		System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
-		System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
-		System.out.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
-		System.out.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia");
-		System.out.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
-		System.out.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
-		System.out.println("Kriteeri 6: Salasanan tulee sisältää yhtälön 5-10+2^4 vastaus");
-		System.out.println("Kriteeri 7: Salasanan tulee sisältää sana 'gaben'");
-		System.out.println("Kriteeri 8: Salasanan tulee sisältää hymiö ':D'");
-		System.out.println("Syötä testattava salasana:");
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		final Scanner lukija = new Scanner(new File("kriteerit.txt"));
+		String rivi = " ";
+		
+		while ( lukija.hasNext() ) {
+			rivi = lukija.nextLine();
+			System.out.println(rivi);
+		}//tiedoston lukeminen
+		lukija.close();
+	
 		String salasana = user_input.next();
 		int tulokset[] = tarkista_kriteerit(salasana);
 		System.out.println("Salasanasi täytti " + tulokset[0] + "/" + tulokset[1] + " kriteereistä.");

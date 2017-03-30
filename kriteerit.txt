@@ -1,4 +1,3 @@
-Tervetuloa testaamaan salasanasi vahvuutta!
 Salasanasi tulee t‰ytt‰‰ seuraavat kriteerit:
 	- Kriteeri 1: Salasanan tulee olla 10 merkki‰ pitk‰
 	- Kriteeri 2: Salasanan tulee sis‰lt‰‰ v‰hint‰‰n yksi numero

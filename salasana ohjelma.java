@@ -5,21 +5,48 @@ public class salasanan_vahvuus {
 
 	private static final Scanner user_input = new Scanner( System.in );
 	
-	public static void main(String[] args) throws FileNotFoundException {
-		
-		final Scanner lukija = new Scanner(new File("kriteerit.txt"));
-		String rivi = " ";
-		
-		while ( lukija.hasNext() ) {
-			rivi = lukija.nextLine();
-			System.out.println(rivi);
-		}//tiedoston lukeminen
-		lukija.close();
-	
-		String salasana = user_input.next();
-		int tulokset[] = tarkista_kriteerit(salasana);
-		System.out.println("Salasanasi täytti " + tulokset[0] + "/" + tulokset[1] + " kriteereistä.");
-		vahvuus(tulokset);
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		boolean lopetus = false;
+		System.out.println("Tervetuloa salasanoja testaavaan ohjelmaan!");
+		System.out.println("Pääset alkuun seuraavilla komennoilla:");
+		System.out.println("testaa	 = käynnistä salasanan testaus");
+		System.out.println("historia = näytä testattujen salasanojen historia ja tulokset");
+		System.out.println("lopeta	 = sulje ohjelma");
+		do {
+			String komento = user_input.next();
+			if (komento.equals("testaa")) {
+				final Scanner lukija = new Scanner(new File("kriteerit.txt"));
+				String rivi = " ";
+				
+				while ( lukija.hasNext() ) {
+					rivi = lukija.nextLine();
+					System.out.println(rivi);
+				}//tiedoston lukeminen
+				lukija.close();
+				
+				String salasana = user_input.next();
+				int tulokset[] = tarkista_kriteerit(salasana);
+				System.out.println("Salasanasi täytti " + tulokset[0] + "/" + tulokset[1] + " kriteereistä.");
+				vahvuus(tulokset);
+				
+				PrintWriter kirjoittaja = new PrintWriter(new FileWriter("historia.txt", true));
+				kirjoittaja.println(salasana + " " + tulokset[0] + "/" + tulokset[1]);
+				kirjoittaja.close();
+			}//if
+			else if (komento.equals("historia")) {
+				final Scanner tiedosto_lukija = new Scanner(new File("historia.txt"));
+				while (tiedosto_lukija.hasNext()) {
+					String sisältö = tiedosto_lukija.nextLine();
+					System.out.println(sisältö);
+				}//while
+				tiedosto_lukija.close();
+			}//else if
+			else if (komento.equals("lopeta")) {
+				lopetus = true;
+			}//else if
+			else
+				System.out.println("Ohjelma ei tunnista komentoa.");
+		} while (lopetus == false);
 		
 	}//main
 
@@ -122,7 +149,7 @@ public class salasanan_vahvuus {
 	}//tarkista_hupsu
 	
 	public static boolean tarkista_vastaus(String salasana) {
-		if (salasana.indexOf("21") != -1)
+		if (salasana.indexOf("11") != -1)
 			return true;
 		else
 			return false;

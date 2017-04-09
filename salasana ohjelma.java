@@ -40,10 +40,10 @@ public class salasanan_vahvuus {
 				System.out.println("Salasanasi täytti " + tulokset[0] + "/" + tulokset[1] + " kriteereistä.");
 				tarkista_vahvuus(tulokset);
 				
-				Date päivämäärä = new Date();
+				Date paivamaara = new Date();
 				
 				PrintWriter kirjoittaja = new PrintWriter(new FileWriter("historia.txt", true));
-				kirjoittaja.println(aikatyyli.format(päivämäärä) + " " + salasana + " " + tulokset[0] + "/" + tulokset[1]);
+				kirjoittaja.println(aikatyyli.format(paivamaara) + " " + salasana + " " + tulokset[0] + "/" + tulokset[1]);
 				kirjoittaja.close();
 			}//if
 			
@@ -51,8 +51,8 @@ public class salasanan_vahvuus {
 				try {
 					final Scanner tiedosto_lukija = new Scanner(new File("historia.txt"));
 				while (tiedosto_lukija.hasNext()) {
-					String sisältö = tiedosto_lukija.nextLine();
-					System.out.println(sisältö);
+					String sisalto = tiedosto_lukija.nextLine();
+					System.out.println(sisalto);
 				}//while
 				tiedosto_lukija.close();
 				}//try
@@ -97,12 +97,12 @@ public class salasanan_vahvuus {
 		boolean kriteerit[] = {tarkista_pituus(salasana), tarkista_numero(salasana), tarkista_kirjainkoko(salasana),
 		tarkista_erikoismerkki(salasana), tarkista_hupsu(salasana), tarkista_vastaus(salasana),
 		tarkista_gaben(salasana), tarkista_hymio(salasana)};
-		int läpäissyt = 0;
+		int lapaissyt = 0;
 		int totaali = 0;
 		for (int i = 0; i < kriteerit.length; i++) {
 			if (kriteerit[i]) {
 				System.out.println("Kriteeri " + (i+1) + " täytetty: TRUE");
-				läpäissyt = läpäissyt + 1;
+				lapaissyt = lapaissyt + 1;
 				totaali = totaali + 1;
 				}
 			else {
@@ -110,7 +110,7 @@ public class salasanan_vahvuus {
 				totaali = totaali + 1;
 			}
 		}
-		return new int[] {läpäissyt, totaali};
+		return new int[] {lapaissyt, totaali};
 	}//kriteerit
 		
 	/**

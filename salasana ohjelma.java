@@ -25,15 +25,28 @@ public class salasanan_vahvuus {
 			System.out.print(">");
 			String komento = user_input.next();
 			if (komento.equals("testaa")) {
+				try {
 				final Scanner lukija = new Scanner(new File("kriteerit.txt"));
 				String rivi = " ";
 				
 				while ( lukija.hasNext() ) {
 					rivi = lukija.nextLine();
 					System.out.println(rivi);
-				}//tiedoston lukeminen
+				}//tiedoston lukeminen - while
 				lukija.close();
-				
+				}//try
+				catch (FileNotFoundException e) {
+					System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
+					System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
+					System.out.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
+					System.out.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia");
+					System.out.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
+					System.out.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
+					System.out.println("Kriteeri 6: Salasanan tulee sisältää yhtälön 5-10+2^4 vastaus");
+					System.out.println("Kriteeri 7: Salasanan tulee sisältää sana 'gaben'");
+					System.out.println("Kriteeri 8: Salasanan tulee sisältää hymiö ':D'");
+					System.out.println("Syötä testattava salasana: ");
+				}//catch
 				System.out.print(">");
 				String salasana = user_input.next();
 				int tulokset[] = tarkista_kriteerit(salasana);
@@ -59,7 +72,7 @@ public class salasanan_vahvuus {
 				catch (FileNotFoundException f) {
 					System.out.println("Hupsista! Tapahtui " + f + "-virhe.");
 					System.out.println("Kokeile ensin testata ohjelmalla jotain salasanaa, ja sitten kokeile komentoa uudestaan.");
-				}
+				}//catch
 			}//else if
 			else if (komento.equals("tyhjennä")) {
 				try {
@@ -71,14 +84,16 @@ public class salasanan_vahvuus {
 				}//try
 				catch (FileNotFoundException f) {
 					System.out.println("Ei ole tyhjennettävää historiaa!");
-				}
-			}
+				}//catch
+			}//else if
 			else if (komento.equals("lopeta")) {
 				lopetus = true;
 			}//else if
 			else
 				System.out.println("Ohjelma ei tunnista komentoa.");
-		} while (lopetus == false);
+		}//do
+		
+		while (lopetus == false);
 		
 	}//main
 
@@ -104,12 +119,12 @@ public class salasanan_vahvuus {
 				System.out.println("Kriteeri " + (i+1) + " täytetty: TRUE");
 				lapaissyt = lapaissyt + 1;
 				totaali = totaali + 1;
-				}
+				}//if
 			else {
 				System.out.println("Kriteeri " + (i+1) + " täytetty: FALSE");
 				totaali = totaali + 1;
-			}
-		}
+			}//else
+		}//for
 		return new int[] {lapaissyt, totaali};
 	}//kriteerit
 		

@@ -36,16 +36,26 @@ public class salasanan_vahvuus {
 				lukija.close();
 				}//try
 				catch (FileNotFoundException e) {
-					System.out.println("Salasanasi tulee täyttää seuraavat kriteerit:");
-					System.out.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
-					System.out.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
-					System.out.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia");
-					System.out.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
-					System.out.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
-					System.out.println("Kriteeri 6: Salasanan tulee sisältää yhtälön 5-10+2^4 vastaus");
-					System.out.println("Kriteeri 7: Salasanan tulee sisältää sana 'gaben'");
-					System.out.println("Kriteeri 8: Salasanan tulee sisältää hymiö ':D'");
-					System.out.println("Syötä testattava salasana: ");
+					PrintWriter kirjoittaja = new PrintWriter("kriteerit.txt");
+						kirjoittaja.println("Salasanasi tulee täyttää seuraavat kriteerit:");
+						kirjoittaja.println("Kriteeri 1: Salasanan tulee olla 10 merkkiä pitkä");
+						kirjoittaja.println("Kriteeri 2: Salasanan tulee sisältää vähintään yksi numero");
+						kirjoittaja.println("Kriteeri 3: Salasanan tulee sisältää pieniä ja isoja kirjaimia");
+						kirjoittaja.println("Kriteeri 4: Salasanan tulee sisältää vähintään yksi erikoismerkki");
+						kirjoittaja.println("Kriteeri 5: Salasanan tulee sisältää sana 'hupsu'");
+						kirjoittaja.println("Kriteeri 6: Salasanan tulee sisältää yhtälön 5-10+2^4 vastaus");
+						kirjoittaja.println("Kriteeri 7: Salasanan tulee sisältää sana 'gaben'");
+						kirjoittaja.println("Kriteeri 8: Salasanan tulee sisältää hymiö ':D'");
+						kirjoittaja.println("Syötä testattava salasana: ");
+					kirjoittaja.close();
+					final Scanner lukija = new Scanner(new File("kriteerit.txt"));
+					String rivi = " ";
+					
+					while ( lukija.hasNext() ) {
+						rivi = lukija.nextLine();
+						System.out.println(rivi);
+					}//while
+					
 				}//catch
 				System.out.print(">");
 				String salasana = user_input.next();

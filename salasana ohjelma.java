@@ -5,11 +5,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
- * <code>salasanan_vahvuus</code> luokka esittää salasanoja testaavan ohjelman
- * toiminnan.
+ * Ohjelma on salasanan testaus -ohjelma, joka on toteutettu Ohjelmoinnin
+ * perusteet -kurssia varten ryhmätyönä vuonna 2017. Salasanoja testataan
+ * kriteerien perusteella, joita hyödyntäen ohjelma testaa annetun salasanan
+ * vahvuuden. Ohjelma pyörii komentokentällä, jossa käyttäjä voi syöttää
+ * komentoja erilaisten toimintojen aikaansaamiseksi.
+ * <p>
+ * Testaamisen ohella ohjelma pitää historiaa testatuista salasanoista ja niiden
+ * tuloksista, ja merkkaa päivämäärän ja ajan, jolloin salasanaa testattiin.
+ * Ohjelmaa voidaan myös pyörittää muutamilla parametreilla, jotta voidaan
+ * nopeasti testata monta salasanaa, tai nopeasti tarkastaa historia.
+ * </p>
  * 
  * @author Billy Ward
  * @author Emil Oksanen
+ * @version 1.0
  */
 public class salasanan_vahvuus {
 
@@ -375,4 +385,4 @@ public class salasanan_vahvuus {
 		System.out.println("-t = suorittaa vain salasana testauksen. Listaa testattavat salasanat parametrin jälkeen");
 		System.out.println("-h = näyttää vain ohjelman historian");
 	}
-}//salasanan_vahvuus
+}//salasanan_vahvuus}//salasanan_vahvuus
